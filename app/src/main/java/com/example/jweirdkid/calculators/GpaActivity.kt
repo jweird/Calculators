@@ -91,23 +91,24 @@ class GpaActivity : AppCompatActivity() {
             unit = courses[i].units.toDouble()
             unitsTotal += courses[i].units.toDouble()
 
-            if(courses[i].grade == "A")
+
+            if(courses[i].grade.toUpperCase() == "A")
             {
                 grade = 4.0
             }
-            else if(courses[i].grade == "B")
+            else if(courses[i].grade.toUpperCase() == "B")
             {
                 grade = 3.0
             }
-            else if(courses[i].grade == "C")
+            else if(courses[i].grade.toUpperCase() == "C")
             {
                 grade = 2.0
             }
-            else if(courses[i].grade == "D")
+            else if(courses[i].grade.toUpperCase() == "D")
             {
                 grade = 1.0
             }
-            else if(courses[i].grade == "F")
+            else if(courses[i].grade.toUpperCase() == "F")
             {
                 grade = 0.0
             }
@@ -115,6 +116,7 @@ class GpaActivity : AppCompatActivity() {
             gradepoints += unit * grade
         }
 
+        //add decimal places
         return gradepoints / unitsTotal
     }
     //Log.d("totalUnits", totalUnits.toString())

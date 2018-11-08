@@ -6,7 +6,7 @@ import android.text.Editable
 import android.widget.EditText
 import android.text.TextWatcher
 import kotlinx.android.synthetic.main.activity_tip.*
-import kotlinx.android.synthetic.main.activity_tip.view.*
+
 
 
 class TipActivity : AppCompatActivity() {
@@ -41,24 +41,29 @@ class TipActivity : AppCompatActivity() {
 
     fun calcTip() :String {
 
-        val bill = if (totalEdit!!.text.isNotEmpty()) {
-            Integer.parseInt(totalEdit!!.text.toString())
+        //there's probably easier way to do this but couldnt find a way to convert it to double right away tried toDouble and parseDouble but
+        // just couldnt understand why it wouldnt work
+        val bill : String = if (totalEdit!!.text.isNotEmpty()) {
+            totalEdit!!.text.toString()
         } else {
-            0
+            "0"
         }
 
-        val tip = if (tipEdit!!.text.isNotEmpty()) {
-            Integer.parseInt(tipEdit!!.text.toString())
+        val tip :String = if (tipEdit!!.text.isNotEmpty()) {
+            tipEdit!!.text.toString()
         } else {
 
-            0
+            "0"
         }
 
-        val convert : Double = tip.toDouble() /100
-        val result = bill * convert
+        val billDouble = bill.toDouble()
+        val tipDouble = tip.toDouble()
+
+        val convert = tipDouble /100
+        val result = billDouble * convert
 
 
-        return ("%.1f".format(result))
+        return ("%.2f".format(result))
 
     }
 

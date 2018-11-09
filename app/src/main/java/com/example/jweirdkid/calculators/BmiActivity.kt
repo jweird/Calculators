@@ -55,6 +55,6 @@ class BmiActivity : AppCompatActivity() {
 
         val bmi = conversionNum * pounds.toDouble() /  Math.pow(heightInInches, 2.0)
 
-        return String.format("%.1f", bmi)
+        return ("%.1f".format(bmi))
     }
 }

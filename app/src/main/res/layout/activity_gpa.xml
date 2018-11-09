@@ -45,14 +45,18 @@ tools:context=".GpaActivity" android:layout_height="match_parent" tools:layout_e
         android:id="@+id/textView4" android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/courseInput" app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"/>
+
     <EditText
+        android:id="@+id/gradeInput"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:inputType="textPersonName"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:id="@+id/gradeInput" android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textView4" android:hint="A"/>
+        android:hint="A"
+        android:inputType="textCapWords"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
     <TextView
         android:text="Units"
         android:layout_width="wrap_content"
@@ -68,40 +72,40 @@ tools:context=".GpaActivity" android:layout_height="match_parent" tools:layout_e
         android:id="@+id/unitInput" android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/textView5" android:hint="3"/>
+
     <Button
-        android:text="Calculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/doneButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@+id/addButtonID"
-        app:layout_constraintBaseline_toBaselineOf="@+id/addButtonID"/>
-    <Button
-        android:text="Add Course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/addButtonID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="8dp"
+        android:text="Add Course"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/doneButton"
-        android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/gpaView"/>
+        app:layout_constraintTop_toBottomOf="@+id/gpaView"
+        app:layout_constraintVertical_bias="0.554" />
+
     <TextView
-        android:text="TextView"
+        android:id="@+id/gpaCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gpaCalc" android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/prev_listview"
-        android:layout_marginStart="107dp" app:layout_constraintStart_toEndOf="@+id/addedClasses"
         android:layout_marginEnd="107dp"
-        app:layout_constraintEnd_toEndOf="@+id/prev_listview"/>
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="60dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/prev_listview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/addedClasses"
+        app:layout_constraintTop_toBottomOf="@+id/prev_listview" />
+
     <TextView
-        android:text="GPA"
+        android:id="@+id/gpaView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gpaView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/gpaCalc" android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/addButtonID"/>
+        android:layout_marginEnd="92dp"
+        android:text="GPA"
+        app:layout_constraintBaseline_toBaselineOf="@+id/gpaCalc"
+        app:layout_constraintEnd_toEndOf="@+id/addButtonID" />
 </android.support.constraint.ConstraintLayout>
 

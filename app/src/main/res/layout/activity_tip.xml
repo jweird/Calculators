@@ -31,13 +31,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="46.37"
         android:inputType="numberDecimal"
         android:singleLine="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/billTitle"
-        tools:text="46.37" />
+        app:layout_constraintTop_toBottomOf="@+id/billTitle" />
 
     <TextView
         android:id="@+id/billTitle"
@@ -67,11 +67,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="15"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tipTitle"
-        tools:text="15" />
+        app:layout_constraintTop_toBottomOf="@+id/tipTitle" />
 
     <TextView
         android:id="@+id/totalTitle"

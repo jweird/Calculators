@@ -68,17 +68,6 @@ class GpaActivity : AppCompatActivity() {
 
         }
 
-        doneButton.setOnClickListener{
-
-            //            val intent = Intent(this@MainActivity, SecondActivity::class.java)
-//            intent.putExtra("listPASS", courses as Serializable )
-
-//            val gpa = getGPA()
-//            gpaCalc.text = gpa.toString()
-//            startActivity(intent)
-
-        }
-
     }
     fun getGPA() : Double {
 

@@ -116,7 +116,5 @@ class GpaActivity : AppCompatActivity() {
 
         return ("%.2f".format(gpa)).toDouble()
     }
-    //Log.d("totalUnits", totalUnits.toString())
-
 }
 

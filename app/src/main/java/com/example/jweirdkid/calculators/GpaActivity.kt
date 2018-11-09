@@ -36,7 +36,7 @@ class GpaActivity : AppCompatActivity() {
                 val previewRow = layoutInflater.inflate(R.layout.preview_row, parent, false)
 
                 val courseTextView = previewRow.findViewById<TextView>(R.id.prevClassTextView)
-                courseTextView.text = "Course: ${courses[position].course} Grade: ${courses[position].grade} Units: ${courses[position].units}"
+                courseTextView.text = "Course: ${courses[position].course} Grade: ${courses[position].grade.toUpperCase()} Units: ${courses[position].units}"
 
                 return previewRow
             }
@@ -44,23 +44,29 @@ class GpaActivity : AppCompatActivity() {
 
         addButtonID.setOnClickListener {
             val course: String = courseInput.text.toString()
-            val grade: String = gradeInput.text.toString()
+            val grade: String = gradeInput.text.toString().toUpperCase()
             val unit: String = unitInput.text.toString()
 
             //check if the EditText have values or not
             if(course.isNotEmpty() && grade.isNotEmpty() && unit.isNotEmpty()) {
-                val adapter : ArrayAdapter<Info> = listView.adapter as ArrayAdapter<Info>
 
-                adapter.add(Info(courseInput.text.toString(), gradeInput.text.toString(), unitInput.text.toString()))
+                if(grade == "A" || grade == "B" || grade == "C" || grade == "D" || grade == "F") {
+                    val adapter: ArrayAdapter<Info> = listView.adapter as ArrayAdapter<Info>
 
-                courseInput.text.clear()
-                gradeInput.text.clear()
-                unitInput.text.clear()
+                    adapter.add(Info(courseInput.text.toString(), gradeInput.text.toString(), unitInput.text.toString()))
 
-                val gpa = getGPA()
-                gpaCalc.text = gpa.toString()
+                    courseInput.text.clear()
+                    gradeInput.text.clear()
+                    unitInput.text.clear()
 
-                adapter.notifyDataSetChanged()
+                    val gpa = getGPA()
+                    gpaCalc.text = gpa.toString()
+
+                    adapter.notifyDataSetChanged()
+                }
+                else {
+                    Toast.makeText(applicationContext, "Make sure grade is either A, B, C, D, F!", Toast.LENGTH_SHORT).show()
+                }
 
             }else{
                 Toast.makeText(applicationContext, "Don't leave any fields blank!", Toast.LENGTH_SHORT).show()
@@ -71,13 +77,13 @@ class GpaActivity : AppCompatActivity() {
     }
     fun getGPA() : Double {
 
-        var unit = 0.0
+        var unitInit : Double
         var unitsTotal = 0.0
         var grade = 0.0
         var gradepoints = 0.0
 
         for(i in courses.indices) {
-            unit = courses[i].units.toDouble()
+            unitInit = courses[i].units.toDouble()
             unitsTotal += courses[i].units.toDouble()
 
 
@@ -102,11 +108,13 @@ class GpaActivity : AppCompatActivity() {
                 grade = 0.0
             }
 
-            gradepoints += unit * grade
+            gradepoints += unitInit * grade
         }
 
         //add decimal places
-        return gradepoints / unitsTotal
+        val gpa = gradepoints / unitsTotal
+
+        return ("%.2f".format(gpa)).toDouble()
     }
     //Log.d("totalUnits", totalUnits.toString())
 

@@ -2,25 +2,43 @@ package com.example.jweirdkid.calculators
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_bmi.*
+import java.lang.Exception
 
+
+// inspiration
+// https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm
 class BmiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bmi)
 
-        calculateButton.setOnClickListener {
-            if(feetInput.text.isNotEmpty() && inchesInput.text.isNotEmpty() && poundsInput.text.isNotEmpty()) {
-                val bmi = getBMI()
+        fun EditText.checkForChange() {
+            this.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
-                bmiTotalTextView.text = bmi.toString()
-            }
-            else {
-                Toast.makeText(applicationContext, "Don't leave any fields blank!", Toast.LENGTH_SHORT).show()
-            }
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    try {
+                        if (s != null && s.isNotEmpty()) {
+                            bmiTotalTextView.text = getBMI()
+                        }
+                    } catch(e: Exception) {
+                    }
+                }
+            })
         }
+        feetInput.checkForChange()
+        inchesInput.checkForChange()
+        poundsInput.checkForChange()
 
     }
 

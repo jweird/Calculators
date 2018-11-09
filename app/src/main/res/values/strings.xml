@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Calculators</string>
+    <string name="underweight_18_5"><![CDATA[Underweight = <18.5]]></string>
+    <string name="bmi_info"><![CDATA[Underweight = <18.5  \n\nNormal weight = 18.5–24.9  \n\nOverweight = 25–29.9  \n\nObesity = BMI of 30 or greater]]></string>
 </resources>
